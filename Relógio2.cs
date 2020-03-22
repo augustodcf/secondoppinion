@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.DateTime;
 using UnityEngine;
 
 public class Relógio : MonoBehaviour
@@ -7,21 +8,22 @@ public class Relógio : MonoBehaviour
     private int countdownDays = 0;
     private int halfdays = 0;
     private float speed = 1.0;
-    private date now = DateTime.now;
+    private date now = null;
 
-    static void start(Relógio relogio)
+    static string start(Relógio relogio)
     {
         int min = 0;
+        date milisecSleep = null;
+        date them = null;
+        now = DateTime.now;
         while (relogio.halfdays > 0)
         {
             min = (relogio.halfdays % 2) == 0 ? 2 : 1;
-            date milisecSleep = (1000*60*min/relogio.speed);
-            date them = now+milisecSleep
+            milisecSleep = (1000*60*min/relogio.speed);
+            them = now+milisecSleep
             if (them==now) {
             	relogio.halfdays--;
-            }
-
-            
+            }    
         }
     }
 
