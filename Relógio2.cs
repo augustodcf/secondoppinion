@@ -15,13 +15,14 @@ public class Relógio : MonoBehaviour
         int min = 0;
         date milisecSleep = null;
         date them = null;
-        now = DateTime.now;
+        
         while (relogio.halfdays > 0)
         {
+        	now = DateTime.now;
             min = (relogio.halfdays % 2) == 0 ? 2 : 1;
             milisecSleep = (1000*60*min/relogio.speed);
             them = now+milisecSleep
-            if (them==now) {
+            if (them<=now) {
             	relogio.halfdays--;
             }    
         }
